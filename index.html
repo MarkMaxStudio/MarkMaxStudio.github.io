@@ -1,121 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MarkMax Studio • Marketing Strategies + Maximum Results</title>
-  <meta name="description" content="Free strategies first. Then flexible plans. SEO, Social, Ads, Content and Analytics built for results."/>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous"/>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#F8FBFF;
-      --fg:#0A2540;
-      --muted:#4B5563;
-      --brand:#1DA1F2;
-      --accent:#2563EB;
-    }
-    *{box-sizing:border-box;scroll-behavior:smooth}
-    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--fg);line-height:1.6}
-    a{color:var(--accent);text-decoration:none}
-    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+<style>
+  /* Existing styles remain... */
 
-    /* Navbar */
-    header{position:sticky;top:0;z-index:20;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.05)}
-    nav{display:flex;align-items:center;justify-content:center;padding:14px 20px}
+  /* Floating Logo Animation */
+  .hero img {
+    max-width: 240px;
+    margin-bottom: 20px;
+    animation: float 4s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
 
-    /* Buttons */
-    .btn{display:inline-flex;gap:8px;align-items:center;padding:12px 18px;border-radius:14px;border:none;font-weight:700;cursor:pointer;color:#fff;background:linear-gradient(135deg,var(--accent),var(--brand));transition:all .3s ease}
-    .btn:hover{box-shadow:0 0 12px var(--brand);transform:translateY(-2px) scale(1.02)}
+  /* Pulse Animation for Buttons */
+  .btn {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: rgba(255,255,255,0.2);
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.4s ease;
+  }
+  .btn:hover::after {
+    opacity: 1;
+    transform: scale(1.2);
+  }
 
-    /* Hero */
-    .hero{padding:100px 0 70px;text-align:center;background:linear-gradient(135deg,#E0F2FE,#fff)}
-    .hero img{max-width:240px;margin-bottom:20px;animation:popIn 1.2s ease forwards}
-    .hero p{color:var(--muted);font-size:18px;margin:0 0 24px;animation:fadeUp 1.5s ease}
-    .hero .btn-group{display:flex;gap:15px;justify-content:center}
+  /* Slide Fade for Section Titles */
+  .section h2 {
+    animation: slideFade 1s ease both;
+  }
+  @keyframes slideFade {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
 
-    /* Sections */
-    .section{padding:60px 0}
-    .section h2{font-size:34px;margin:0 0 10px;text-align:center;color:var(--fg)}
-    .lead{color:var(--muted);margin:0 0 16px;text-align:center}
-    .grid{display:grid;gap:18px}
-    .services{grid-template-columns:repeat(auto-fit,minmax(250px,1fr));margin-top:30px}
-    .card{background:#fff;border:1px solid #e5e7eb;border-radius:18px;padding:24px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,.05);transition:transform .2s}
-    .card i{font-size:36px;color:var(--brand);margin-bottom:14px}
-    .card:hover{transform:translateY(-5px);box-shadow:0 6px 16px rgba(0,0,0,.08)}
-
-    /* Footer */
-    footer{padding:40px 0;color:var(--muted);text-align:center;background:#f1f5f9}
-    form{display:grid;gap:12px;max-width:500px;margin:20px auto}
-    form input{padding:12px 14px;border-radius:12px;border:1px solid #cbd5e1;background:#fff;color:var(--fg)}
-
-    @keyframes fadeUp{0%{opacity:0;transform:translateY(20px)}100%{opacity:1;transform:translateY(0)}}
-    @keyframes popIn{0%{opacity:0;transform:scale(0.6)}100%{opacity:1;transform:scale(1)}}
-  </style>
-</head>
-<body>
-  <!-- Navbar (minimal, just white strip) -->
-  <header>
-    <nav class="container"></nav>
-  </header>
-
-  <!-- Hero with centered logo -->
-  <section class="hero">
-    <div class="container">
-      <div data-aos="zoom-in">
-        <img src="mm.png" alt="MarkMax Studio Logo">
-      </div>
-      <p data-aos="fade-up" data-aos-delay="200">
-        We provide free strategies first. Then scale to plans that deliver SEO, social, ads and content for measurable growth.
-      </p>
-      <div class="btn-group" data-aos="fade-up" data-aos-delay="400">
-        <a href="#services" class="btn">Our Services</a>
-        <a href="#contact" class="btn">Get Strategy</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services -->
-  <main>
-    <section id="services" class="section container">
-      <h2 data-aos="fade-up">Services built for results</h2>
-      <p class="lead" data-aos="fade-up" data-aos-delay="200">We start with a free, custom strategy. If you like it, we execute — fast.</p>
-      <div class="grid services">
-        <div class="card" data-aos="zoom-in"><i class="fas fa-search"></i><h3>SEO Optimization</h3><p>Technical fixes and content that ranks.</p></div>
-        <div class="card" data-aos="zoom-in" data-aos-delay="100"><i class="fas fa-share-alt"></i><h3>Social Media Strategy</h3><p>Platform-native content and community building.</p></div>
-        <div class="card" data-aos="zoom-in" data-aos-delay="200"><i class="fas fa-bullhorn"></i><h3>Google & Meta Ads</h3><p>Performance campaigns with sharp creatives and testing.</p></div>
-        <div class="card" data-aos="zoom-in" data-aos-delay="300"><i class="fas fa-file-alt"></i><h3>Content & Landing Pages</h3><p>Messaging that converts: landing pages, case studies, blogs.</p></div>
-        <div class="card" data-aos="zoom-in" data-aos-delay="400"><i class="fas fa-comments"></i><h3>Marketing Consultation</h3><p>Positioning, ICP clarity, funnel mapping and growth plans.</p></div>
-        <div class="card" data-aos="zoom-in" data-aos-delay="500"><i class="fas fa-chart-line"></i><h3>Analytics & Dashboards</h3><p>GA4, GSC and dashboards that track and improve KPIs.</p></div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="section" style="background:#E0F2FE">
-      <div class="container" data-aos="fade-up">
-        <h2>Want to know more?</h2>
-        <p class="lead">Drop your number below, and we’ll contact you with a free custom strategy.</p>
-        <form>
-          <input type="text" placeholder="Your name" required>
-          <input type="tel" placeholder="Your contact number" required>
-          <button class="btn" type="submit">Submit</button>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <p>© <span id="year"></span> MarkMax Studio. All rights reserved.</p>
-  </footer>
-
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({duration:800,once:true});
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+  /* Wiggle Animation on Service Icons */
+  .card i {
+    display: inline-block;
+    transition: transform 0.3s;
+  }
+  .card:hover i {
+    animation: wiggle 0.6s ease;
+  }
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(10deg); }
+    50% { transform: rotate(-10deg); }
+    75% { transform: rotate(6deg); }
+  }
+</style>
